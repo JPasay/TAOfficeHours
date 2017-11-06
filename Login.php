@@ -1,5 +1,7 @@
 <?php
+session_start();
 include_once('support.php');
+
 $body = <<<EOBODY
   <h1>TA Office Hours Queue</h1>
   <form action="main.php" method="post">
