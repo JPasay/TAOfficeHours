@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="StyleSheet.css" />
 </head>
 
-<!-- Button to open the modal login form -->
 <button id="loginBUtton">Welcome to UMD's queue sytem <br> click me to proceed</button>
 
 <!-- The Modal -->
@@ -25,7 +24,7 @@
             <input type="password" placeholder="Enter Password" name="password" required><br><br>
 
             <input type="submit" value="Sign in">
-            <br><br><br>
+            <br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="http://nooooooooooooooo.com/">Forgot Password</a>
@@ -34,8 +33,6 @@
 </div>
 
 <script>
-
-
     let button = document.getElementById('loginBUtton');
     button.addEventListener('click', loginButton, false);
     function loginButton() {
@@ -43,10 +40,8 @@
         this.style.display = 'none';
     }
 
-    // Get the modal
     var modal = document.getElementById('popUp');
 
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";

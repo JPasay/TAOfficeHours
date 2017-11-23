@@ -8,22 +8,22 @@ body {
 }
 
 #loginBUtton{
-    z-index: 1; /* Sit on top */
-    width: 600px;
-    height: 280px;
+    z-index: 1;
+    width: 37.500em;
+    height: 17.500em;
     background-color: rgba(255,0,0,0.6);
     margin: 0 auto;
-    margin-top: 220px;
-    margin-left: 750px;
-    padding-top: 10px;
-    padding-left: 50px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
-    -moz-border-radius: 15px;
+    margin-top: 15em;
+    margin-left: 40em;
+    padding-top: 0.625em;
+    padding-left: 2.5em;
+    -webkit-border-radius: 1em;
+    -o-border-radius: 1em;
+    -moz-border-radius: 1em;
     color: white;
     font-weight: bolder;
-    box-shadow: inset -4px -4px rgba(0,0,0,0.5);
-    font-size: 18px;
+    box-shadow: inset -0.250em -0.250em rgba(0,0,0,0.5);
+    font-size: 1.125em;
     cursor: pointer;
 
 }
@@ -32,76 +32,75 @@ body {
 }
 
 #logo{
-    height: 180px;
-    width: 200px;
-    top: 60px;
-    left: -50px;
+    height: 11.250em;
+    width: 12.500em;
+    top: 3.750em;
+    left: 3.125em;
 }
 
 .imgContainer{
-    padding-left: 30px;
+    padding-left: 1em;
 }
 
-/* The Modal (background) */
 .popUpScreen {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 3.750em;
 }
 
-/* Modal Content/Box */
+
 .loginBox {
-    z-index: 1; /* Sit on top */
-    width: 300px;
-    height: 480px;
+    z-index: 1;
+    width: 18.750em;
+    height: 26em;
     background-color: rgba(0,0,0,0.6);
     margin: 0 auto;
-    margin-top: 120px;
-    padding-top: 10px;
-    padding-left: 50px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
-    -moz-border-radius: 15px;
+    margin-top: 7.500em;
+    padding-top: 0.625em;
+    padding-left: 3.125em;
+    -webkit-border-radius: 0.938em;
+    -o-border-radius: 0.938em;
+    -moz-border-radius: 0.938em;
     color: white;
     font-weight: bolder;
     box-shadow: inset -4px -4px rgba(0,0,0,0.5);
-    font-size: 18px;
+    font-size: 1.125em;
 }
 
 
 .loginBox input[type='text'] {
-    width: 200px;
-    height: 35px;
+    width: 15em;
+    height: 2.7em;
     border: 0;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -o-border-radious: 5px;
-    -moz-border-radius: 5px;
+    border-radius: 0.313em;
+    -webkit-border-radius: 0.313em;
+    -o-border-radious: 0.313em;
+    -moz-border-radius: 0.313em;
 }
 
 .loginBox input[type='password'] {
-    width: 200px;
-    height: 35px;
+    width: 15em;
+    height: 2.7em;
     border: 0;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -o-border-radious: 5px;
-    -moz-border-radius: 5px;
+    border-radius: 0.313em;
+    -webkit-border-radius: 0.313em;
+    -o-border-radious: 0.313em;
+    -moz-border-radius: 0.313em;
 }
 
 .loginBox input[type='submit'] {
-    width: 100px;
-    height: 35px;
+    width: 6.250em;
+    height: 3em;
     border: 0;
-    border-radius: 5px;
+    border-radius: 0.313em;
     background-color: red;
     font-weight: bolder;
     color: white;
@@ -112,7 +111,6 @@ body {
     opacity: 0.80;
 }
 
-/* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
