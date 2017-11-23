@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="StyleSheet.css" />
+</head>
+
+<!-- Button to open the modal login form -->
+<button id="loginBUtton">Welcome to UMD's queue sytem <br> click me to proceed</button>
+
+<!-- The Modal -->
+<div id="popUp" class="popUpScreen">
+    <!-- Modal Content -->
+    <form class="loginBox animate" >
+        <div class="imgContainer">
+            <img id="logo" src="images/logo_top_bottom.png">
+        </div>
+        <h2><u>Login</u></h2>
+        <div class="container">
+            <!--<label><b>Username</b></label><br>-->
+            <input type="text" placeholder="Enter Username" name="userName" required><br><br>
+
+            <!--<label><b>Password</b></label><br>-->
+            <input type="password" placeholder="Enter Password" name="password" required><br><br>
+
+            <input type="submit" value="Sign in">
+            <br><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="http://nooooooooooooooo.com/">Forgot Password</a>
+        </div>
+    </form>
+</div>
+
+<script>
+
+
+    let button = document.getElementById('loginBUtton');
+    button.addEventListener('click', loginButton, false);
+    function loginButton() {
+        document.getElementById('popUp').style.display='block';
+        this.style.display = 'none';
+    }
+
+    // Get the modal
+    var modal = document.getElementById('popUp');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            button.style.display = "block";
+        }
+    }
+</script>
+</html>
