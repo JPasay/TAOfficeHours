@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <link rel="stylesheet" href="StyleSheet.css" />
+    <link rel="stylesheet" href="mainPageStyle.css" />
 </head>
 
 <button id="loginBUtton">Welcome to UMD's queue sytem <br> click me to proceed</button>
 
-<!-- The Modal -->
 <div id="popUp" class="popUpScreen">
-    <!-- Modal Content -->
     <form class="loginBox animate" >
         <div class="imgContainer">
             <img id="logo" src="images/logo_top_bottom.png">
@@ -40,11 +38,11 @@
         this.style.display = 'none';
     }
 
-    var modal = document.getElementById('popUp');
+    let pop = document.getElementById('popUp');
 
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == pop) {
+            pop.style.display = "none";
             button.style.display = "block";
         }
     }
