@@ -1,15 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: JeanClaude
+ * Date: 9/25/2017
+ * Time: 7:46 PM
+ */
 
-function generatePage($body, $title="Example") {
+function generatePage($body, $title="Application System") {
     $page = <<<EOPAGE
 <!doctype html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>$title</title>
-    <link rel = "stylesheet" href = "Login.css" type="text/css"/>
+    <head> 
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>$title</title>	
     </head>
-
+            
     <body>
             $body
     </body>
@@ -17,13 +23,5 @@ function generatePage($body, $title="Example") {
 EOPAGE;
 
     return $page;
-}
-function connectToDB($host, $user, $password, $database) {
-  $db = mysqli_connect($host, $user, $password, $database);
-  if (mysqli_connect_errno()) {
-    echo "<h2>Connect failed.</h2>\n".mysqli_connect_error();
-    exit();
-  }
-  return $db;
 }
 ?>
