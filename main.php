@@ -80,12 +80,13 @@ EOBODY;
 	// 	echo "Connection to database established<br><br>";
 	// }
 
-  //Create a db if it doesn't exist with test student info.
+  //Create a Student db if it doesn't exist with test student info.
   if(empty($db -> query("SELECT * FROM queue_system"))){
     $sql = "CREATE TABLE queue_system(
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     directoryID VARCHAR(50) NOT NULL PRIMARY KEY,
+    email VARCHAR(50),
     password VARCHAR(200) NOT NULL,
     timesMet INT UNSIGNED NOT NULL
     )";
@@ -96,7 +97,7 @@ EOBODY;
   	// 	echo "Insertion completed.<br>";
   	// }
     $hashed = password_hash(123, PASSWORD_DEFAULT);
-    $query = "INSERT INTO queue_system values('John', 'Appleseed', 'japple', '$hashed', 0)";
+    $query = "INSERT INTO queue_system values('John', 'Appleseed', 'japple', 'john.appleseed.gmail.com', '$hashed', 0)";
     $res = $db->query($query);
     // if (!$res) {
   	// 	die("Insertion failed: " . $db->error);
@@ -104,7 +105,7 @@ EOBODY;
   	// 	echo "Insertion completed.<br>";
   	// }
     $hashed2 = password_hash(1234, PASSWORD_DEFAULT);
-    $query2 = "INSERT INTO queue_system values('Bob', 'Smith', 'bsmith', '$hashed2', 0)";
+    $query2 = "INSERT INTO queue_system values('Bob', 'Smith', 'bsmith', 'bob.smith@yahoo.com', '$hashed2', 0)";
     $res2 = $db->query($query2);
     // if (!$res2) {
   	// 	die("Insertion failed 2: " . $db->error);
@@ -118,6 +119,7 @@ EOBODY;
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     directoryID VARCHAR(50) NOT NULL PRIMARY KEY,
+    email VARCHAR(50),
     password VARCHAR(300) NOT NULL,
     course VARCHAR(100) NOT NULL,
     code INT UNSIGNED NOT NULL
@@ -125,11 +127,11 @@ EOBODY;
     $result = $db->query($sql);
 
     $hashed = password_hash(111, PASSWORD_DEFAULT);
-    $query = "INSERT INTO tas values('Lady', 'Gaga', 'lgaga', '$hashed', 'cmsctemp', 0)";
+    $query = "INSERT INTO tas values('Lady', 'Gaga', 'lgaga', 'lady.gaga@gmail.com', '$hashed', 'cmsctemp', 0)";
     $res = $db->query($query);
 
     $hashed2 = password_hash(222, PASSWORD_DEFAULT);
-    $query2 = "INSERT INTO tas values('John', 'Cena', 'jcena', '$hashed2', 'cmsctemp', 0)";
+    $query2 = "INSERT INTO tas values('John', 'Cena', 'jcena', 'john.cena@gmail.com', '$hashed2', 'cmsctemp', 0)";
     $res2 = $db->query($query2);
   }
 
