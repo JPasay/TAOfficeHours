@@ -9,6 +9,7 @@
     require_once ("support.php");
     require_once ("dbLogin.php");
      session_start();
+     $name = $_SESSION['firstname'];
 $main = <<< EOBODY
     <body>
     <div id="container">
@@ -21,7 +22,7 @@ $main = <<< EOBODY
         </header>
         <header id="logoutContainer">
             <span id="logoutText" onclick="logoutClickable()">
-                    <strong>Log out</strong>
+                <strong>Log out</strong>
             </span>
 
         </header>
@@ -60,7 +61,8 @@ EOBODY;
         $query = "SELECT firstName FROM queue_system WHERE directoryID = '$userN'";
         $name2 = $db->query($query);
         $name3 = $name2->fetch_array(MYSQLI_ASSOC);*/
-        $name = $_SESSION["firstName"];
+        
+
     // if (!$name2) {
     //  die("Insertion failed 2: " . $db->error);
     // } else {
@@ -68,9 +70,10 @@ EOBODY;
     // }
     $main .= <<< EOBODY
         <body>
+        <div id ="content">
             <p>
         
-            <h1>Welcome  $name</h1>
+            <h2>Welcome  $name</h2>
             <div>
             <br/>
             <form id="enterUser" action="{$_SERVER['PHP_SELF']}" method="post">
@@ -92,6 +95,7 @@ EOBODY;
             </form>
             </div>
             </p>
+        </div>
         </body> 
     </html>
 EOBODY;

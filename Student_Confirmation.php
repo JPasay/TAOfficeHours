@@ -5,30 +5,28 @@
     <title>Maryland</title>
 </head>
 <?php
-$body = "";
-$body .= '<body>';
-$body .= '<div id="container">';
-    $body .= '<header id="logoContainer">';
-        $body .= '<span id="logo" onclick="logoClickable()">';
-        $body .= '<br>';
-        $body .= '<img src="images/University_of_Maryland_logo.svg">';
-        $body .= '</span>';
-    $body .= '</header>';
-    $body .= '<header id="logoutContainer">';
-        $body .= '<span id="logoutText" onclick="logoutClickable()">';
-        $body .= '<strong>Log out</strong>';
-        $body .= '</span>';
-    $body .= '</header>';
-    $body .= '<div id="content">';
-        $body .= '<p>';
-        $body .= '<h1>'.$_POST['studentName'].', You are the, '.'***Variable for the student queue number****'.' in line to meet with the ta. Refresh the page to updapte your rank</h1>';
-        $body .= '</p>';
-        $body .= '</div>';
-    $body .= '</div>';
-$body .= '</body>';
-echo $body;
-?>
-<script>
+    require_once ("support.php");
+    require_once ("dbLogin.php");
+    session_start();
+    $firstname = $_SESSION['firstname'];
+    $lastname  = $_SESSION['lastname'];
+
+
+$body = <<< EOBODY
+<body>
+<div id="container">
+    <header id="logoContainer">
+        <span id="logo" onclick="logoClickable()">
+        </br>
+        <img src="images/University_of_Maryland_logo.svg">
+        </span>
+    </header>
+    <header id="logoutContainer">
+        <span id="logoutText" onclick="logoutClickable()">
+            <strong>Log out</strong>
+        </span>
+    </header>
+    <script>
 
     //Need to change this*************************************************
     function logoClickable() {
@@ -38,5 +36,60 @@ echo $body;
     function logoutClickable() {
         window.location.href='https://images-na.ssl-images-amazon.com/images/M/MV5BZjU4ZWYxNDktMDNlMi00YThhLTg3YWEtNTc0Mjg0YzAxM2UwXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_.jpg';
     }
-</script>
+    </script>
+
+    <div id="content">
+        <p>
+            <h1>$firstname, You are the, ... ***Variable for the student queue number****'.' in line to meet with the ta. Refresh the page to updapte your rank
+            </h1>
+        </p>
+        <br>
+        <br>
+        <form id="rank" action="{$_SERVER['PHP_SELF']}" method="post">
+            <input type="submit" value="Exit" id="exit" name="exit">
+            <input type="submit" value="Logout" id="logout" name="logout">
+            <br>
+            <strong>Caution: Logging out will automaticaly remove your name from the queue.</strong></br>
+            <strong>Caution: Exit will automaticaly remove your name from the queue and take you back to the Student form.</strong>
+        </form>
+
+    </div>
+</div>
+</body>
+EOBODY;
+    //no user looged in
+    if(!isset($_SESSION['studentLoggedin']) || $_SESSION['studentLoggedin'] == false || !isset($_SESSION['inQueue'])){
+    $bottomPart =  "<br /><br /><br /><h1>You are not logged in. Please wait to be redirected to the login page...</h1><br />";
+
+    header("refresh:3; url=main.php");
+  }
+    if(isset($_SESSION['inQueue']) && $_SESSION['inQueue'] == false ){
+        echo "<br /><br /><br /><h1>You are not already in a queue for a course. Please wait to be redirected to the Student form...</h1><br />";
+        header("refresh:1.5; url=Student_Form.php");
+    }
+
+    $db = new mysqli($host, $user, $password, $database);
+    if(isset($_POST['logout'])){
+            //$_SESSION['loggedin'] = false;
+            $_SESSION['studentLoggedin'] = false;
+            $_SESSION['inQueue'] = false;
+
+
+            $query="DELETE FROM officehourqueue WHERE firstName ='$firstname' AND lastName ='$lastname' ";
+            $result = $db->query($query);
+            header('Location: main.php');
+    }
+    if(isset($_POST['exit'])){
+            //$_SESSION['loggedin'] = false;
+            $_SESSION['inQueue'] = false;
+
+
+            $query="DELETE FROM officehourqueue WHERE firstName ='$firstname' AND lastName ='$lastname' ";
+            $result = $db->query($query);
+            header('Location: Student_HomePage.php');
+    }
+
+echo $body;
+?>
+
 </html>

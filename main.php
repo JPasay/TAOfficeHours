@@ -3,9 +3,16 @@
   session_start();
 
   if(isset($_SESSION['studentLoggedin']) && $_SESSION['studentLoggedin'] == true){
-    echo "<br /><br /><br /><h1>You are already logged in. Please wait to be redirected...</h1><br />";
-
-        header("refresh:1.5; url=Student_HomePage.php");
+    
+    //checking if the student has already be put into the quuee for a course
+    if($_SESSION['inQueue'] == true){
+      echo "<br /><br /><br /><h1>You are already in a queue for a course. Please wait to be redirected...</h1><br />";
+      header("refresh:1.5; url=Student_Confirmation.php");
+    }else{
+      echo "<br /><br /><br /><h1>You are already logged in. Please wait to be redirected...</h1><br />";
+      header("refresh:1.5; url=Student_HomePage.php");
+    }
+    
   }
   if(isset($_SESSION['TaLoggedin']) && $_SESSION['TaLoggedin'] == true){
     if(isset($_SESSION['workingCourse']) && $_SESSION['workingCourse'] == true){
@@ -97,7 +104,7 @@ EOBODY;
   	// 	echo "Insertion completed.<br>";
   	// }
     $hashed = password_hash(123, PASSWORD_DEFAULT);
-    $query = "INSERT INTO queue_system values('John', 'Appleseed', 'japple', 'john.appleseed.gmail.com', '$hashed', 0)";
+    $query = "INSERT INTO queue_system values('John', 'Appleseed', 'japple', 'john.appleseed@gmail.com', '$hashed', 0)";
     $res = $db->query($query);
     // if (!$res) {
   	// 	die("Insertion failed: " . $db->error);
@@ -136,7 +143,7 @@ EOBODY;
   }
 
   //Queue Database
-  if(empty($db -> query("SELECT * FROM queue"))) {
+ /* if(empty($db -> query("SELECT * FROM queue"))) {
     $sql = "CREATE TABLE queue(
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
@@ -146,7 +153,7 @@ EOBODY;
     $result = $db->query($sql);
   }
 
-
+*/
   $bottomPart="";
   
   
@@ -168,8 +175,16 @@ EOBODY;
         $name3 = $name2->fetch_array(MYSQLI_ASSOC);
         $name = $name3["firstName"];
         //$_SESSION['loggedin'] = true;
-        $_SESSION['firstnamee'] = $name;
+        $_SESSION['firstname'] = $name;
         $_SESSION['studentLoggedin'] = true;
+
+        //Getting the last name and store it in the session
+        $query1 = "SELECT lastName FROM queue_system WHERE directoryID = '$UID'";
+        $lname2 = $db->query($query1);
+        $lname3 = $lname2->fetch_array(MYSQLI_ASSOC);
+        $lname = $lname3["lastName"];
+        $_SESSION['lastname'] = $lname;
+
         header('Location: Student_HomePage.php');
       }
     }

@@ -5,7 +5,7 @@
     <title>Maryland</title>
 </head>
 
-<?php>
+<?php
     require_once("dbLogin.php");
     session_start();
 $topPart = <<<EOBODY
@@ -45,17 +45,20 @@ $topPart = <<<EOBODY
         }
 
         </script>
+    </div>
+    </body>
 EOBODY;
     $bottomPart = "";
     if(isset($_SESSION['TaLoggedin']) && $_SESSION['TaLoggedin'] == true){
-        if(!isset($_SESSION['workingCourse'])){
+        if(!isset($_SESSION['workingCourse']) || $_SESSION['workingCourse']==false){
 
             $bottomPart .=  "<br /><br /><br /><h1>You haven't chosen a course. Please wait to be redirected to the Selection Course page...</h1><br />";
 
             header("refresh:3; url=TA_Page.php");
         }
-        $topPart.= <<<EOBODY
-        <body>
+    }
+    $topPart .= <<< EOBODY
+    <body>
         <p>
         <h1>There is currently ${number} in queue.</h1><br><br>
         <div>
@@ -65,7 +68,7 @@ EOBODY;
                     <td><strong>Student Id</strong></td><td><strong>Student Name</strong></td><td><strong>Category</strong></td><td><strong>Desc</strong></td>
                 </tr>
                 <?php
-//                Change this so you can ouput the top 10 in queue***************************************************
+//                Change this so you can ouput the top 10 in queue***************************************************       
                 $arr = array("Jane", "Bob", "Steve", "Chris", "Mary", "Susie", "Anna", "Brian", "Rob", "Alex");
                 for ($x = 0; $x < count($arr); $x++) {
                     echo "<tr>";
@@ -100,15 +103,16 @@ EOBODY;
         <div>
             <input type="submit" value="Get Next Student" onclick="getNext()" > &nbsp;&nbsp;
             <input type="submit" value="TA for another class">
+            <input type="submit" value="Logout" name=logout>
         </div>
         </p>
-        </body>
+       
 
         //Need to change this*************************************************
         function getNext() {
             window.location.href='https://youtu.be/5LitDGyxFh4?t=11s';
         }
-
+    </body>
     
 </html>
 
@@ -116,9 +120,4 @@ EOBODY;
 
     echo $topPart.$bottomPart;
 ?>
-/**
- * Created by PhpStorm.
- * User: JeanClaude
- * Date: 11/22/2017
- * Time: 7:33 PM
- */
+

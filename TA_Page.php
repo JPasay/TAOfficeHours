@@ -50,15 +50,23 @@ $topPart = <<<EOBODY
       </script>
 EOBODY;
   
-
+ $bottomPart ="";
   if(isset($_SESSION['TaLoggedin']) && $_SESSION['TaLoggedin'] == true){
+
+    if(isset($_SESSION['workingCourse']) && $_SESSION['workingCourse'] == true){
+
+      $bottomPart .=  "<br /><br /><br /><h1>You are already working a class. Please wait to be redirected to the TA Queue page...</h1><br />";
+
+      header("refresh:3; url=TA_Queue_Screen.php");
+    }
+
 
     $name = $_SESSION['firstname'];
   
     $topPart .= <<<EOBODY
       <body>
         <p>
-        <h1>Welcome $namee </h1>
+        <h1>Welcome $name </h1>
         <div>
           <br/>
           <form id="enterUser" action="{$_SERVER['PHP_SELF']}" method ="post">
@@ -84,7 +92,7 @@ EOBODY;
     </body>
     </html>
 EOBODY;
-    $bottomPart ="";
+   
     $db = new mysqli($host, $user, $password, $database);
     if(isset($_POST['submit'])) {
       $code = $_POST["code"];
@@ -98,9 +106,12 @@ EOBODY;
 
       $_SESSION['workingCourse']=true;
 
-      header('Location: TA_Queue_Screen.php');
+     
 
-      //create database for that actually has the queue.
+      //$queue = $course . "queue";
+      
+      //alert("done");
+      header('Location: TA_Queue_Screen.php');
 
     }
 
