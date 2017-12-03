@@ -1,0 +1,22 @@
+form {
+  border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 1em 1em;
+  margin: 1em 0em;
+  display: inline-block;
+  border: .2em solid #ccc;
+  box-sizing: border-box;
+}
+
+  .submitButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1.5em;
+    margin: 1em 0em;
+    border: none;
+
+    width: 100%;
+  }
