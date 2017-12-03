@@ -1,0 +1,1 @@
+Your rank is .... Refresh the page to see new rank
