@@ -24,7 +24,6 @@ $main = <<< EOBODY
             <span id="logoutText" onclick="logoutClickable()">
                 <strong>Log out</strong>
             </span>
-
         </header>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
@@ -39,7 +38,6 @@ $main = <<< EOBODY
                 }
             })
          });
-
         //Need to change this*************************************************
         function logoClickable() {
             window.location.href='https://i.ytimg.com/vi/oqyQKOTTTJo/maxresdefault.jpg';
@@ -52,17 +50,13 @@ $main = <<< EOBODY
     </div>
     </body>
 EOBODY;
-
     if(isset($_SESSION['studentLoggedin']) && $_SESSION['studentLoggedin'] == true){
-
-
         /*$db = new mysqli($host, $user, $password, $database);
         $userN = $_SESSION['firstname'];
         $query = "SELECT firstName FROM queue_system WHERE directoryID = '$userN'";
         $name2 = $db->query($query);
         $name3 = $name2->fetch_array(MYSQLI_ASSOC);*/
         
-
     // if (!$name2) {
     //  die("Insertion failed 2: " . $db->error);
     // } else {
@@ -74,7 +68,7 @@ EOBODY;
             <p>
         
             <h2>Welcome  $name</h2>
-            <div>
+            
             <br/>
             <form id="enterUser" action="{$_SERVER['PHP_SELF']}" method="post">
                 <strong><font size="4">What class do you need help in</font></strong>&nbsp;&nbsp;
@@ -88,18 +82,19 @@ EOBODY;
                 <strong><font size="4">Please enter the code the TA set</font>
                 </strong>
                 <!--GOING TO NEED TO CHECK IF CODE FOR CLASS IS CORRECT-->
-                <input type="text" maxlength="5" id="code" name="code" disabled required>
+                <input type="text" maxlength="5" id="code" name="code" disabled>
                 <br><br>
                 <input type="submit" value="Start Session" id="submit" name="submit" disabled> &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="submit" value="Logout" id="logout" name="logout">
             </form>
-            </div>
+            
             </p>
         </div>
         </body> 
     </html>
 EOBODY;
         $bottomPart="";
+        //echo 'stece';
         $db = new mysqli($host, $user, $password, $database);
         if(isset($_POST['submit'])){
             $enteredCode = $_POST["code"];
@@ -107,31 +102,39 @@ EOBODY;
             $query = "SELECT code FROM tas WHERE course = '$course'";
             $query2 = $db->query($query);
             $classCode = $query2->fetch_array(MYSQLI_ASSOC);
-
             if($enteredCode === $classCode['code']){
                 $_SESSION['course'] = $course;
                 header('Location: Student_Form.php');
             }
             else{
-                $bottomPart = "<strong>There are no TAs available for $course at this time. Please choose a different course, or make sure the code you entered is correct. Ask the Ta for the correct code if you don't have one.</strong>";
+                $bottomPart .= <<<EOBODY
+                <body>
+                    <div id ="content">
+                    
+                     "<strong>There are no TAs available for $course at this time. Please choose a different course, or make sure the code you entered is correct. Ask the Ta for the correct code if you don't have one.</strong>";
+                     
+                     
+                     </div>
+                     </body>
+                     </html>
+EOBODY;
             }
         }
-
         if(isset($_POST['logout'])){
             //$_SESSION['loggedin'] = false;
+            //print 'stece';
+
             $_SESSION['studentLoggedin'] = false;
             header('Location: main.php');
         }
   
   // no user is currentle logged in. 
     }else{
+
         
         $bottomPart =  "<br /><br /><br /><h1>You are not logged in. Please wait to be redirected to the login page...</h1><br />";
-
         header("refresh:3; url=main.php");
-
     }
-
     $page = generatePage($main.$bottomPart);
     echo $page;
 ?>

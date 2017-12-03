@@ -65,6 +65,7 @@ EOBODY;
   
     $topPart .= <<<EOBODY
       <body>
+      <div id ="content">
         <p>
         <h1>Welcome $name </h1>
         <div>
@@ -88,7 +89,7 @@ EOBODY;
           </form>
         </div>
         </p>
-      
+    </div>
     </body>
     </html>
 EOBODY;
@@ -105,6 +106,7 @@ EOBODY;
       $execute2 = $db->query($query2);
 
       $_SESSION['workingCourse']=true;
+      $_SESSION['class'] = $course;
 
      
 

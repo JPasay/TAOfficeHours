@@ -35,10 +35,10 @@
 #content{
     width: 100%;
     position: relative;
-    /*top: 25em;*/
+    top: 5em;
     background: white;
-    height: 1500px;
-    top: 5.625em;
+    /*height: 150px;*/
+    /*top: 5.625em;*/
 
 }
 

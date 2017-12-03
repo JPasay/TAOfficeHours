@@ -89,18 +89,34 @@ EOBODY;
     //Queue Database
   //DB connection
   $db = new mysqli($host, $user, $password, $database);
-  if(empty($db -> query("SELECT * FROM officehourqueue"))) {
+  $class = $_SESSION['course'];
+  $whichClass = "officehourqueueFor" . $class;
+
+  function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+  //alert($whichClass);
+  if(empty($db -> query("SELECT * FROM `{$whichClass}` "))) {
         //alert("good");
-    $sql = "CREATE TABLE officehourqueue(
+    //alert("ok");
+    $sql = "CREATE TABLE `{$whichClass}` (
       firstName VARCHAR(50) NOT NULL,
       lastName VARCHAR(50) NOT NULL,
       course VARCHAR(10),
       subject VARCHAR(30),
       description VARCHAR(100),
-      timesMet INT UNSIGNED NOT NULL
+      timesMet INT NOT NULL, 
+      rank INT NOT NULL AUTO_INCREMENT,
+      PRIMARY KEY (rank)
+      
       )" ;
     $result = $db->query($sql);
+    if($result){
+      //alert("yesss");
+      //echo "created table sample_tb....<br>";
+    }
   } 
+
   
   //submit button clickecd
   if(isset($_POST['submit'])){
@@ -108,17 +124,33 @@ EOBODY;
     
     $subject = $_POST['selectedCourse'];
     $desc = $_POST['desc'];
-    $sql1 = "INSERT INTO officehourqueue values('$name', '$lname', '$course', '$subject', '$desc', 0) ";
+
+    //$sql = $db-> query("SELECT * FROM officehourqueue"); 
+    //$rank = $sql->fetch_array(MYSQLI_ASSOC);
+
+
+    $sql1 = "INSERT INTO `{$whichClass}` (firstName, lastName, course, subject, description, timesMet) values('$name', '$lname', '$course', '$subject', '$desc', 0) ";
     $result = $db->query($sql1);
-    $_SESSION['inQueue'] = true;
-    
+    if($result){
+      
+      //alert("yeSSSS");
+      $_SESSION['inQueue'] = true;
+      //echo "created table sample_tb....<br>";     
       header('Location: Student_Confirmation.php');
+
+    }else{
+      //alert("nooooo");
+      $_SESSION['inQueue'] = false;
+    }
+    
+    
       
   }
   if(isset($_POST['logout'])){
             //$_SESSION['loggedin'] = false;
-            $_SESSION['studentLoggedin'] = false;
-            header('Location: main.php');
+    $_SESSION['inQueue'] = false;
+    $_SESSION['studentLoggedin'] = false;
+    header('Location: main.php');
   }
   if(isset($_POST['back'])){
             //$_SESSION['loggedin'] = false;
