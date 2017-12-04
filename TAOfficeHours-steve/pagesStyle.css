@@ -1,0 +1,70 @@
+#logoContainer {
+    text-align: center;
+    height: 3.125em;
+    background: #e60000;
+    width: 100%;
+    z-index: 20;
+    position: fixed;
+    top: 0em;
+    left: 0em;
+    /*cursor: pointer;*/
+}
+
+#logo{
+    cursor: pointer;
+}
+
+#logoutContainer{
+    z-index: 10;
+    padding-left: 120em;
+    top: 3.125em;
+    height: 2em;
+    width: 100%;
+    position: fixed;
+    background: #e60000;
+    left: 0em;
+}
+
+#logoutText{
+    cursor: pointer;
+    color: white;
+}
+
+
+
+#content{
+    width: 100%;
+    position: relative;
+    top: 5em;
+    background: white;
+    /*height: 150px;*/
+    /*top: 5.625em;*/
+
+}
+
+td{
+    width: 7em;
+}
+
+#10_table_queue{
+    float: left;
+}
+
+#course{
+    padding-left: 2em;
+}
+
+#category{
+    padding-left: 7em;
+}
+
+#textArea{
+    padding-left: 2em;
+}
+
+#confirmForm{
+    padding-left: 23.5em;
+}
+.table-fit {
+    width: 1px;
+}
