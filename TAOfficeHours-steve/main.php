@@ -32,18 +32,21 @@ $topPart = <<<EOBODY
   <head>
       <meta charset="UTF-8">
       <title>Home Page</title>
-      <link rel="stylesheet" href="mainPageStyle.css" />
+      <!--<link rel="stylesheet" href="mainPageStyle.css" />-->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <!--<button id="loginBUtton">Welcome to UMD's queue system <br> click me to proceed</button>-->
 
   <div id="popUp" class="popUpScreen">
       <form class="loginBox animate" action="{$_SERVER['PHP_SELF']}" method ="post">
-          <div class="imgContainer">
-              <img id="logo" src="images/logo_top_bottom.png">
-          </div>
-          <h2><u>Login</u></h2>
           <div class="container">
+                    <div class="imgContainer">
+              <img id="logo" src="images/logo_top_bottom.png" height="200" width = "200">
+          </div>
+          <h2 class=""><u>Login</u></h2>
               <!--<label><b>Username</b></label><br>-->
               <input type="text" placeholder="Enter UID" name="userName" required><br><br>
 
@@ -54,7 +57,7 @@ $topPart = <<<EOBODY
               <input type="submit" name="submitTA" value="Sign in as TA">
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a href="http://nooooooooooooooo.com/">Forgot Password</a>
           </div>
       </form>
@@ -77,6 +80,8 @@ $topPart = <<<EOBODY
           }
       }
   </script>
+  <script src="bootstrap/jquery-3.2.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
   </html>
 EOBODY;
   //DB connection

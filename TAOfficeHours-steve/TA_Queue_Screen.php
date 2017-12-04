@@ -3,6 +3,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="pagesStyle.css">
     <title>Maryland</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <?php
@@ -95,11 +98,13 @@ EOBODY;
                 <input type="submit" value="Clock out" id="clockOut" name="clockOut">&nbsp;&nbsp;
                 <input type="submit" value="Logout" id="logout" name="logout">
                 <br>
-                <strong>Caution: Logging out will automaticaly delete the table queue list.</strong></br>
+                <strong>Caution: Logging out will automaticaly delete the table queue list.</strong></br><br>
                 <strong>Caution: Clock out will  prevent other students from entering into your queue. But you still have to finish attendng those that remain in your queue.</strong>
 
             </form>
         </div>
+          <script src="bootstrap/jquery-3.2.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
         </body>
     
     </html>
@@ -124,14 +129,12 @@ EOBODY;
         $topPart .= <<< EOBODY
         <body>
         <div id = "content">
-            <p>
-            
 EOBODY;
 
             $topPart .= "<h1>There is currently ".$count." students in queue.</h1><br><br>";
             $topPart .= <<< EOBODY
             <div>
-                <table style="float: left;" border="1" >
+                <table class="table table-bordered table-striped table-hover table-condensed text-center table-fit">
                     <strong>QUEUE TABLE</strong><br><br>
                     <tr>
                         <th><strong>Rank</strong></th><th><strong>Student Name</strong></th><th><strong>Subject</strong></th><th><strong>Description</strong></th>
@@ -148,18 +151,21 @@ EOBODY;
                         }
                     $topPart .= <<<EOBODY
                 </table>
-            </div><br><br><br><br><br>
+                </div>
             <form id = "touch" action="{$_SERVER['PHP_SELF']}" method="post">
         
                 <input type="submit" value="Get Next Student" id="nextStudent" name="nextStudent"> &nbsp;&nbsp;
                 <input type="submit" value="Clock out" id="clockOut" name="clockOut">&nbsp;&nbsp;
                 <input type="submit" value="Logout" id="logout" name="logout">
                 <br><br><br>
-                <strong>Caution: Logging out will automaticaly delete the table queue list.</strong></br>
+                <strong>Caution: Logging out will automaticaly delete the table queue list.</strong></br> <br>
                 <strong>Caution: Clock out will  prevent other students from entering into your queue. But you still have to finish attendng those that remain in your queue.</strong>
 
             </form>
             </div>
+            
+              <script src="bootstrap/jquery-3.2.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
         </body>
     
     </html>

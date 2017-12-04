@@ -3,6 +3,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="pagesStyle.css">
     <title>Maryland</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <?php
     require_once ("support.php");
@@ -111,6 +114,8 @@ $body = <<< EOBODY
 
     </div>
 </div>
+              <script src="bootstrap/jquery-3.2.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 EOBODY;
 
