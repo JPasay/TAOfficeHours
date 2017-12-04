@@ -43,7 +43,7 @@ body {
 }
 
 .popUpScreen {
-    display: none;
+    /*display: none;*/
     position: fixed;
     z-index: 1;
     left: 0;
@@ -63,7 +63,7 @@ body {
     height: 26em;
     background-color: rgba(0,0,0,0.6);
     margin: 0 auto;
-    margin-top: 7.500em;
+    margin-top: 1.500em;
     padding-top: 0.625em;
     padding-left: 3.125em;
     -webkit-border-radius: 0.938em;
@@ -97,7 +97,7 @@ body {
 }
 
 .loginBox input[type='submit'] {
-    width: 6.250em;
+    width: 10.700em;
     height: 3em;
     border: 0;
     border-radius: 0.313em;

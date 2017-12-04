@@ -18,7 +18,7 @@
     z-index: 10;
     padding-left: 120em;
     top: 3.125em;
-    height: 1.250em;
+    height: 2em;
     width: 100%;
     position: fixed;
     background: #e60000;
@@ -35,10 +35,10 @@
 #content{
     width: 100%;
     position: relative;
-    /*top: 25em;*/
+    top: 5em;
     background: white;
-    height: 1500px;
-    top: 5.625em;
+    /*height: 150px;*/
+    /*top: 5.625em;*/
 
 }
 
@@ -64,4 +64,7 @@ td{
 
 #confirmForm{
     padding-left: 23.5em;
+}
+.table-fit {
+    width: 1px;
 }
