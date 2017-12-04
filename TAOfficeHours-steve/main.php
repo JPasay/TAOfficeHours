@@ -146,6 +146,20 @@ if(empty($db -> query("SELECT * FROM tas"))) {
 $bottomPart="";
 
 
+
+ if(empty($db -> query("SELECT * FROM imageContainer"))) {
+   $sql = "CREATE TABLE imageContainer(
+   id INT UNSIGNED NOT NULL,
+   image BLOB
+   )";
+   $result = $db->query($sql);
+ }
+
+ $imgQuery = "INSERT INTO imageContainer(id, image) VALUES (1, 'images/logo_top_bottom.png')";
+ $imgRes = $db->query($imgQuery);
+
+
+
 //Verify if either submit button were pressed/
 if(isset($_POST["submit"]) || isset($_POST["submitTA"])) {
     $UID = trim($_POST["userName"]);
