@@ -3,6 +3,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="pagesStyle.css">
     <title>Maryland</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <?php
   require_once ("support.php");
@@ -66,6 +69,8 @@ $main = <<<EOBODY
           window.location.href='https://images-na.ssl-images-amazon.com/images/M/MV5BZjU4ZWYxNDktMDNlMi00YThhLTg3YWEtNTc0Mjg0YzAxM2UwXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_.jpg';
       }
   </script>
+                <script src="bootstrap/jquery-3.2.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
   </html>
 EOBODY;
   $bottomPart = "";
@@ -99,7 +104,7 @@ EOBODY;
   if(empty($db -> query("SELECT * FROM `{$whichClass}` "))) {
         //alert("good");
     //alert("ok");
-    $sql = "CREATE TABLE `{$whichClass}` (
+    $sql = "CREATE TABLE $whichClass (
       firstName VARCHAR(50) NOT NULL,
       lastName VARCHAR(50) NOT NULL,
       course VARCHAR(10),
